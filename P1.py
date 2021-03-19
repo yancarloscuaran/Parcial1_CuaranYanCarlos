@@ -1,9 +1,16 @@
-texto = 'En muchas partes del cuerpo como son las manos, las orejas o los pies, están representados todos los órganos y partes del cuerpo. Incidiendo sobre estas zonas se pueden crear arcos reflejos que actúen directamente sobre cualquier órgano del cuerpo y que solucionen cualgquier anomalía que exista.'
+import operator
+texto = 'Quiero alejarme y caminar caminar caminar A tierras lejanas llegar y admirar admirar Por verdes y limpias praderas andar andar Y bajo las estrellas dormir y soñar soñar soñar'
 
-
-lista = texto.split()
-conteo = []
+lista = texto.lower().split()
+rep = []
+repeticiones = []
 for numpalabras in lista:
-    conteo.append(lista.count(numpalabras))
+    rep.append(lista.count(numpalabras))
 
-print("Repetidas"+ "\n" + str(list(zip(lista, conteo))))
+for conteo in range(0, len(lista)):
+    repeticiones.append((lista[conteo], rep[conteo]))
+cadena = list(set(repeticiones))
+cadena = sorted(cadena, key=operator.itemgetter(1))
+
+for conteo in range(0, len(cadena)):
+    print('La palabra '+ "(" + cadena[conteo][0]+ ")" + ' se repite ' + str(cadena[conteo][1]) + ' veces.')
